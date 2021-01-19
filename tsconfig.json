@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "UMD",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "strict": true,
+    "paths": {
+      "/assets/*": ["src/render/assets/*"],
+      "/components/*": ["src/render/components/*"], // 普通组件
+      "/views/*": ["src/render/views/*"], // 路由组件
+      "/lib/*": ["src/render/lib/*"],
+      "/utils/*": ["src/render/utils/*"],
+    },
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src/**/*",
+    "typings/*.d.ts"
+  ]
+}
