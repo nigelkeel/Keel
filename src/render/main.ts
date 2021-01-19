@@ -6,6 +6,9 @@ import { store, isdev } from '/utils/index'
 
 import './index.css'
 
+// 引入 VueRouter
+import VueRouter from "./router"
+
 // 引入 Element-Plus
 import ElementPlus from "element-plus"
 import 'element-plus/lib/theme-chalk/index.css';
@@ -15,6 +18,7 @@ import 'element-plus/lib/theme-chalk/index.css';
 // console.log('electron is dev', isdev)
 
 createApp(App as any)
+.use(VueRouter)
 .use(ElementPlus)
 .mount('#app')
 .$nextTick(window.ClosePreloadLoading)
