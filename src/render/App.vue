@@ -25,7 +25,7 @@
       </el-aside>
       <!-- 主 -->
       <el-main>
-        <Center v-if="pageMode===0"></Center>
+        <Center v-if="pageMode===1"></Center>
         <div v-else>
           <router-view></router-view>
         </div>

@@ -13,7 +13,10 @@ import VueRouter from "./router"
 
 // 引入 Element-Plus
 import ElementPlus from "element-plus"
-import 'element-plus/lib/theme-chalk/index.css';
+import 'element-plus/lib/theme-chalk/index.css'
+import locale from 'element-plus/lib/locale/lang/zh-cn'
+// import locale from 'element-plus/lib/locale'
+// locale.use(lang)
 
 // 引入 iconfont
 import 'https://at.alicdn.com/t/font_2338321_xa5vsf6ll7b.js'
@@ -24,6 +27,6 @@ import 'https://at.alicdn.com/t/font_2338321_xa5vsf6ll7b.js'
 
 createApp(App as any)
 .use(VueRouter)
-.use(ElementPlus)
+.use(ElementPlus, { locale })
 .mount('#app')
 .$nextTick(window.ClosePreloadLoading)
