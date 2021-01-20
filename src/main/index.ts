@@ -11,8 +11,10 @@ let win: BrowserWindow
 function createWin() {
   // 创建浏览器窗口
   win = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    width: 1200,
+    height: 800,
+    frame: false, // 隐藏边框
+    titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
       nodeIntegration: true,
       preload: join(__dirname, '../preload/index.js'),

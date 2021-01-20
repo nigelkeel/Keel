@@ -12,10 +12,9 @@
     "strict": true,
     "paths": {
       "/assets/*": ["src/render/assets/*"],
-      "/components/*": ["src/render/components/*"], // 普通组件
-      "/views/*": ["src/render/views/*"], // 路由组件
+      "/views/*": ["src/render/views/*"], // 组件目录
       "/lib/*": ["src/render/lib/*"],
-      "/utils/*": ["src/render/utils/*"],
+      "/utils/*": ["src/render/utils/*"] // 这里多一个逗号都不行哦！
     },
     "allowSyntheticDefaultImports": true
   },

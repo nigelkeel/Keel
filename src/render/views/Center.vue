@@ -1,0 +1,138 @@
+<template>
+  <div class="center">
+    <h1 style="height: 50px; font-size: 40px">个人中心</h1>
+    <div>
+      <!-- 第一行 -->
+      <el-row>
+        <!-- 当前时间 -->
+        <el-col :span="6" style="padding: 5px;" >
+          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+            <!-- 数据显示 -->
+            <div style="font-size: 30px">
+              <span>{{current.getHours().toString().padStart(2, '0')}}:</span>
+              <span>{{current.getMinutes().toString().padStart(2, '0')}}:</span>
+              <span>{{current.getSeconds().toString().padStart(2, '0')}}</span>
+            </div>
+            <div style="font-size: 16px">
+              {{current.getFullYear()}}年{{current.getMonth()+1}}月{{current.getDate()}}日 星期{{getWeekday(current.getDay())}}
+            </div>
+          </el-card>
+        </el-col>
+        <!-- 人生多少天 -->
+        <el-col :span="6" style="padding: 5px;" >
+          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+            <!-- 提示 -->
+            <el-tooltip placement="top" effect="light">
+              <template #content>
+                今天是人生的第{{lifeIndex}}天。
+              </template>
+              <!-- 数据显示 -->
+              <div style="font-size: 30px">{{lifeIndex}}天</div>
+            </el-tooltip>
+          </el-card>
+        </el-col>
+        <!-- 位置和天气 -->
+        <el-col :span="6" style="padding: 5px;" >
+          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+            <!-- 数据显示 -->
+            <div style="font-size: 30px">{{city}}</div>
+            <div style="font-size: 16px">{{weather}}</div>
+          </el-card>
+        </el-col>
+        <!-- 成就点数 -->
+        <el-col :span="6" style="padding: 5px;" >
+          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+            <!-- 数据显示 -->
+            <div style="font-size: 30px">100</div>
+            <div style="font-size: 16px">成就点</div>
+          </el-card>
+        </el-col>
+      </el-row>
+      <!-- 第二行 -->
+      <el-row>
+        <!-- 健康 -->
+        <el-col :span="6" style="padding: 5px;" >
+          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+            <!-- 数据显示 -->
+            <div style="font-size: 30px">90</div>
+            <div style="font-size: 16px">健康指数</div>
+          </el-card>
+        </el-col>
+        <!-- 发展 -->
+        <el-col :span="6" style="padding: 5px;" >
+          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+            <!-- 数据显示 -->
+            <div style="font-size: 30px">90</div>
+            <div style="font-size: 16px">发展指数</div>
+          </el-card>
+        </el-col>
+        <!-- 幸福 -->
+        <el-col :span="6" style="padding: 5px;" >
+          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+            <!-- 数据显示 -->
+            <div style="font-size: 30px">90</div>
+            <div style="font-size: 16px">幸福指数</div>
+          </el-card>
+        </el-col>
+        <!-- 积分 -->
+        <el-col :span="6" style="padding: 5px;" >
+          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+            <!-- 数据显示 -->
+            <div style="font-size: 30px">1024</div>
+            <div style="font-size: 16px">秩序点数</div>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
+  </div>
+</template>
+<script>
+/*
+  Center | 个人中心
+  created: 2021.01.20
+*/
+
+export default {
+  name: "Center",
+  data () {
+    return {
+      current: new Date(),
+      lifeIndex: 0, 
+      birthday: '1996-01-01',
+      city: '深圳',
+      weather: '多云 / 16℃ '
+    }
+  },
+  created () {
+    // 定期更新时间
+    const updateTimer = setInterval(()=>{
+      this.current = new Date()
+      this.computedLifeIndex()
+    }, 100)
+  },
+  methods: {
+    // 计算人生多少天
+    computedLifeIndex () {
+      const birthTime = Date.parse(new Date(this.birthday))
+      const nowTime = Date.now()
+      this.lifeIndex =  parseInt((nowTime - birthTime)/(1000*60*60*24))
+    },
+    // 把星期转换成中文形式（Vue 3居然删了过滤器）
+    getWeekday (value) {
+      const CN = "一二三四五六日"
+      return CN[value-1]
+    }
+  }, 
+};
+</script>
+<style lang="less">
+  .center {
+    .el-card {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+</style>
