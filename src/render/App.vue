@@ -1,16 +1,16 @@
 <template>
   <div>
-    <!-- <Calendar /> -->
-    <router-view></router-view>
+    <Center />
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 <script>
-import Calendar from './components/Calendar.vue'
+import Center from '/components/Center.vue'
 
 export default {
   name: 'App',
   components: {
-    Calendar,
+    Center,
   },
 }
 </script>
