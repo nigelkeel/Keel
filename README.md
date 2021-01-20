@@ -13,6 +13,7 @@
 - `Vue Router 4.x`
 - `TypeScript`
 - `Element Plus`
+- `echarts 5.x`
 - `Less`
 
 
@@ -39,6 +40,15 @@
 ### v0.7
 
 - 修复 `ElementPlus` 默认语言不是中文的问题
+
+- 修复无边框带来的无法点击问题   
+
+  > 罪魁祸首 `-webkit-app-region: drag`
+
+- 引入 `echarts`
+
+  `npm i -S echarts`
+
 - 新增模块中心（Mod）  `待开发`
 
 ### v0.6

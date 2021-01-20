@@ -11,12 +11,12 @@
           </div>
           <!-- 按钮 -->
           <div class="tabs">
-            <el-button circle v-for="i in 3" :key="i">
+            <el-button circle v-for="i in 3" :key="i" @click="pageMode=1">
               <svg class="icon" aria-hidden="true" style="width: 33px; height: 33px; ">
                 <use xlink:href="#icon-app"></use>
               </svg>  
             </el-button>
-            <el-button circle>
+            <el-button circle @click="pageMode=0">
               <svg class="icon" aria-hidden="true" style="width: 33px; height: 33px; ">
                 <use xlink:href="#icon-setting"></use>
               </svg>  
@@ -25,7 +25,7 @@
       </el-aside>
       <!-- 主 -->
       <el-main>
-        <Center v-if="pageMode===1"></Center>
+        <Center v-if="pageMode===0"></Center>
         <div v-else>
           <router-view></router-view>
         </div>
