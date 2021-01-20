@@ -6,7 +6,11 @@
         <!-- 当前时间 -->
         <el-col :span="12" style="padding: 5px;" >
           <el-card :body-style="{ padding: '10px' }" style="width:190px">
-            <i class="iconfont icon-date"></i>
+            <!-- 图标 -->
+            <svg class="icon" aria-hidden="true" style="width: 30px; height: 30px; padding-bottom: 10px">
+              <use xlink:href="#icon-time1"></use>
+            </svg>
+            <!-- 数据显示 -->
             <div style="font-size: 16px">{{current.getFullYear()}}年{{current.getMonth()+1}}月{{current.getDate()}}日 星期{{getWeekday(current.getDay())}}</div>
             <div style="font-size: 30px">{{current.getHours().toString().padStart(2, '0')}}:{{current.getMinutes().toString().padStart(2, '0')}}:{{current.getSeconds().toString().padStart(2, '0')}}</div>
           </el-card>
@@ -14,8 +18,18 @@
         <!-- 人生多少天 -->
         <el-col :span="12" style="padding: 5px;" >
           <el-card :body-style="{ padding: '10px' }" style="width:190px">
-            <div style="font-size: 16px">已经活了</div>
-            <div style="font-size: 30px">{{lifeIndex}}天</div>
+            <!-- 图标 -->
+            <svg class="icon" aria-hidden="true" style="width: 30px; height: 30px; padding-bottom: 10px">
+              <use xlink:href="#icon-time"></use>
+            </svg>
+            <!-- 提示 -->
+            <el-tooltip placement="top" effect="light">
+              <template #content>
+                今天是人生的第{{lifeIndex}}天。
+              </template>
+              <!-- 数据显示 -->
+              <div style="font-size: 30px">{{lifeIndex}}天</div>
+            </el-tooltip>
           </el-card>
         </el-col>
       </el-row>

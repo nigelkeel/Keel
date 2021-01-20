@@ -13,6 +13,9 @@ import VueRouter from "./router"
 import ElementPlus from "element-plus"
 import 'element-plus/lib/theme-chalk/index.css';
 
+// 引入 iconfont
+import "https://at.alicdn.com/t/font_2338321_cps0vl5dip9.js"
+
 // console.log('ipcRenderer:', ipcRenderer)
 // console.log('Store', store)
 // console.log('electron is dev', isdev)
