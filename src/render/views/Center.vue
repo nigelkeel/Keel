@@ -5,8 +5,8 @@
       <!-- 第一行 -->
       <el-row>
         <!-- 当前时间 -->
-        <el-col :span="6" style="padding: 5px;" >
-          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+        <el-col :span="6" class="col">
+          <el-card :body-style="{ padding: '10px' }" style="width:250px">
             <!-- 数据显示 -->
             <div style="font-size: 30px">
               <span>{{current.getHours().toString().padStart(2, '0')}}:</span>
@@ -19,8 +19,8 @@
           </el-card>
         </el-col>
         <!-- 人生多少天 -->
-        <el-col :span="6" style="padding: 5px;" >
-          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+        <el-col :span="6" class="col">
+          <el-card :body-style="{ padding: '10px' }" style="width:250px">
             <!-- 提示 -->
             <el-tooltip placement="top" effect="light">
               <template #content>
@@ -32,16 +32,16 @@
           </el-card>
         </el-col>
         <!-- 位置和天气 -->
-        <el-col :span="6" style="padding: 5px;" >
-          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+        <el-col :span="6" class="col">
+          <el-card :body-style="{ padding: '10px' }" style="width:250px">
             <!-- 数据显示 -->
             <div style="font-size: 30px">{{city}}</div>
             <div style="font-size: 16px">{{weather}}</div>
           </el-card>
         </el-col>
         <!-- 成就点数 -->
-        <el-col :span="6" style="padding: 5px;" >
-          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+        <el-col :span="6" class="col">
+          <el-card :body-style="{ padding: '10px' }" style="width:250px">
             <!-- 数据显示 -->
             <div style="font-size: 30px">100</div>
             <div style="font-size: 16px">成就点</div>
@@ -51,32 +51,32 @@
       <!-- 第二行 -->
       <el-row>
         <!-- 健康 -->
-        <el-col :span="6" style="padding: 5px;" >
-          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+        <el-col :span="6" class="col" >
+          <el-card :body-style="{ padding: '10px' }" style="width:250px">
             <!-- 数据显示 -->
             <div style="font-size: 30px">90</div>
             <div style="font-size: 16px">健康指数</div>
           </el-card>
         </el-col>
         <!-- 发展 -->
-        <el-col :span="6" style="padding: 5px;" >
-          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+        <el-col :span="6" class="col" >
+          <el-card :body-style="{ padding: '10px' }" style="width:250px">
             <!-- 数据显示 -->
             <div style="font-size: 30px">90</div>
             <div style="font-size: 16px">发展指数</div>
           </el-card>
         </el-col>
         <!-- 幸福 -->
-        <el-col :span="6" style="padding: 5px;" >
-          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+        <el-col :span="6" class="col" >
+          <el-card :body-style="{ padding: '10px' }" style="width:250px">
             <!-- 数据显示 -->
             <div style="font-size: 30px">90</div>
             <div style="font-size: 16px">幸福指数</div>
           </el-card>
         </el-col>
         <!-- 积分 -->
-        <el-col :span="6" style="padding: 5px;" >
-          <el-card :body-style="{ padding: '10px' }" style="width:240px">
+        <el-col :span="6" class="col" >
+          <el-card :body-style="{ padding: '10px' }" style="width:250px">
             <!-- 数据显示 -->
             <div style="font-size: 30px">1024</div>
             <div style="font-size: 16px">秩序点数</div>
@@ -85,9 +85,9 @@
       </el-row>
       <!-- 第三行 -->
       <el-row class="echarts">
-        <el-col :span="18" style="padding: 5px;">
-          <el-card style="width:600px">
-            <div id="echarts" style="width: 600px; height:300px;"></div>
+        <el-col :span="24" class="col">
+          <el-card :body-style="{ padding: '10px' }" style="padding-right: 5px">
+            <div id="echarts" style="width: 900px; height:300px;"></div>
           </el-card>
         </el-col>
       </el-row>
@@ -142,24 +142,43 @@ export default {
       let myChart = this.$echarts.init(document.getElementById('echarts'))
       // 绘制图表
       myChart.setOption({
-          title: {},
-          tooltip: {},
-          xAxis: {
-              data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-          },
-          yAxis: {},
-          series: [{
-              name: '销量',
-              type: 'bar',
-              data: [5, 20, 36, 10, 10, 20]
-          }]
+        visualMap: {
+            show: false,
+            min: 0,
+            max: 10000
+        },
+        calendar: {
+            range: '2021'
+        },
+        series: {
+            type: 'heatmap',
+            coordinateSystem: 'calendar',
+            data: this.getVirtulData(2021),
+        }
       });
+    },
+    getVirtulData(year) {
+      year = year || '2017';
+      var date = +this.$echarts.number.parseDate(year + '-01-01');
+      var end = +this.$echarts.number.parseDate(year + '-12-31');
+      var dayTime = 3600 * 24 * 1000;
+      var data = [];
+      for (var time = date; time <= end; time += dayTime) {
+          data.push([
+              this.$echarts.format.formatTime('yyyy-MM-dd', time),
+              Math.floor(Math.random() * 10000)
+          ]);
+      }
+      return data;
     }
   }, 
 };
 </script>
 <style lang="less">
   .center {
+    .col {
+      padding: 5px;
+    }
     .el-card {
       height: 120px;
       display: flex;

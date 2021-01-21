@@ -51,6 +51,7 @@
 - 新增设置中心 （`Setting`） 开发中
 - 使用 `electron-store` 进行数据管理
 - `day.js` 本地化
+- 新建 `element-reset.less` 文件
 
 ### v0.7
 

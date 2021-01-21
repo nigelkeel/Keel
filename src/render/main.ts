@@ -14,6 +14,7 @@ import VueRouter from "./router"
 // 引入 Element-Plus
 import ElementPlus from "element-plus"
 import 'element-plus/lib/theme-chalk/index.css'
+import './assets/css/reset-element.css'
 import locale from 'element-plus/lib/locale/lang/zh-cn'
 import 'dayjs/locale/zh-cn'
 

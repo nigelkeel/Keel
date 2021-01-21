@@ -59,7 +59,7 @@ export default {
 </script>
 <style lang="less">
   .setting {
-    .el-collapse-item_title {
+    .el-collapse-item__header{
       font-size: 30px;
     }
     .input-text {
