@@ -1,6 +1,6 @@
 <template>
   <div class="apps">
-    <h1 style="height: 50px; font-size: 40px">应用</h1>
+    <h1 style="height: 60px; font-size: 40px">应用中心</h1>
     <el-row v-for="(row, y) in 7" :key="y">
       <el-col :span="3" v-for="(col, x) in 8" :key="x">
         <el-card :style="config[y][x].title ? '' : 'visibility: hidden;'" @click="jump(config[y][x].link)">
@@ -38,6 +38,7 @@ export default {
     }
     this.config[0][0] = { title: "个人中心", link: "/center", icon: "", desc: "我的个人中心。"}
     this.config[1][0] = { title: "日历", link: "/cal", icon: "", desc: "我的日历。"}
+    this.config[2][0] = { title: "设置中心", link: "/setting", icon: "", desc: "设置中心。"}
   },
   methods: {
     jump (link) {

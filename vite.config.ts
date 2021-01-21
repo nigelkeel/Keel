@@ -23,8 +23,8 @@ const config: UserConfig = {
   optimizeDeps: {
     // 这里不加也没事，用 require 的形式就能避开 import 被编译成 /@modules/fs?import
     // allowNodeBuiltins: ['electron-is-dev', 'electron-store', 'electron']
-    allowNodeBuiltins: ['element-plus/lib/locale/lang/zh-cn', "echarts"], 
-    include: ['element-plus/lib/locale/lang/zh-cn', "echarts"]
+    allowNodeBuiltins: ['element-plus/lib/locale/lang/zh-cn', "dayjs/locale/zh-cn", "echarts"], 
+    include: ['element-plus/lib/locale/lang/zh-cn', "dayjs/locale/zh-cn", "echarts"]
   },
   rollupInputOptions: {
     external: [

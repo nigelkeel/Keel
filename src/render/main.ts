@@ -15,6 +15,7 @@ import VueRouter from "./router"
 import ElementPlus from "element-plus"
 import 'element-plus/lib/theme-chalk/index.css'
 import locale from 'element-plus/lib/locale/lang/zh-cn'
+import 'dayjs/locale/zh-cn'
 
 // 引入 ECharts
 import * as echarts from 'echarts'
@@ -23,12 +24,12 @@ import * as echarts from 'echarts'
 import 'https://at.alicdn.com/t/font_2338321_xa5vsf6ll7b.js'
 
 // console.log('ipcRenderer:', ipcRenderer)
-// console.log('Store', store)
 // console.log('electron is dev', isdev)
 
-const app:any = createApp(App as any)
+const app:any = createApp(App as any) 
 
 app.config.globalProperties.$echarts = echarts // 引入ECharts
+app.config.globalProperties.$store = store
 
 app
 .use(VueRouter)

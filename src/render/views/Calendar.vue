@@ -1,7 +1,9 @@
 <template>
   <div class="app">
-    <h1 style="height: 50px; font-size: 40px">日历</h1>
-    <el-calendar  v-model="value"></el-calendar>
+    <h1 style="height: 60px; font-size: 40px">日历</h1>
+    <el-card>
+      <el-calendar  v-model="value"></el-calendar>
+    </el-card>
   </div>
 </template>
 <script>

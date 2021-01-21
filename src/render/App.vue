@@ -17,7 +17,7 @@
                 <use xlink:href="#icon-app"></use>
               </svg>  
             </el-button>
-            <el-button circle @click="pageMode=0">
+            <el-button circle @click="pageMode=3">
               <svg class="icon" aria-hidden="true" style="width: 33px; height: 33px; ">
                 <use xlink:href="#icon-setting"></use>
               </svg>  
@@ -28,6 +28,7 @@
       <el-main>
         <Apps v-if="pageMode===0" @changePageMode="changePageMode"></Apps>
         <Center v-else-if="pageMode===1"></Center>
+        <Setting v-else-if="pageMode===3"></Setting>
         <div v-else>
           <router-view></router-view>
         </div>
@@ -37,12 +38,14 @@
 </template>
 <script>
 import Apps from '/views/Apps.vue'
+import Setting from '/views/Setting.vue'
 import Center from '/views/Center.vue'
 
 export default {
   name: 'App',
   components: {
     Apps,
+    Setting,
     Center,
   },
   data () {

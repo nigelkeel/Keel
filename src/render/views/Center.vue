@@ -1,6 +1,6 @@
 <template>
   <div class="center">
-    <h1 style="height: 50px; font-size: 40px">个人中心</h1>
+    <h1 style="height: 60px; font-size: 40px">个人中心</h1>
     <div>
       <!-- 第一行 -->
       <el-row>
@@ -112,6 +112,9 @@ export default {
     }
   },
   created () {
+    // 获取初始数据
+    const initData = this.$store.get('user')
+    if (initData) this.birthday = initData.birthday
     // 定期更新时间
     const updateTimer = setInterval(()=>{
       this.current = new Date()
