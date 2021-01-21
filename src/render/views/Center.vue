@@ -84,9 +84,11 @@
         </el-col>
       </el-row>
       <!-- 第三行 -->
-      <el-row>
-        <el-col :span="24">
-          <div id="echarts" style="width: 600px;height:400px;"></div>
+      <el-row class="echarts">
+        <el-col :span="18" style="padding: 5px;">
+          <el-card style="width:600px">
+            <div id="echarts" style="width: 600px; height:300px;"></div>
+          </el-card>
         </el-col>
       </el-row>
     </div>
@@ -137,7 +139,7 @@ export default {
       let myChart = this.$echarts.init(document.getElementById('echarts'))
       // 绘制图表
       myChart.setOption({
-          title: { text: '条形图' },
+          title: {},
           tooltip: {},
           xAxis: {
               data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
@@ -161,6 +163,15 @@ export default {
       align-items: center;
       justify-content: center;
       text-align: center;
+    }
+    .echarts {
+      .el-card {
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
     }
   }
 </style>

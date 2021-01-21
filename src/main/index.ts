@@ -16,6 +16,8 @@ function createWin() {
     frame: false, // 隐藏边框
     titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
+      // 关闭同源策略
+      webSecurity: false,
       nodeIntegration: true,
       preload: join(__dirname, '../preload/index.js'),
     },

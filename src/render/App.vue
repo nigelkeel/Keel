@@ -11,7 +11,8 @@
           </div>
           <!-- 按钮 -->
           <div class="tabs">
-            <el-button circle v-for="i in 3" :key="i" @click="pageMode=1">
+            <el-button circle v-for="(item, index) in 3" :key="index" @click="pageMode=index">
+              {{index}}
               <svg class="icon" aria-hidden="true" style="width: 33px; height: 33px; ">
                 <use xlink:href="#icon-app"></use>
               </svg>  
@@ -25,7 +26,8 @@
       </el-aside>
       <!-- 主 -->
       <el-main>
-        <Center v-if="pageMode===0"></Center>
+        <Apps v-if="pageMode===0" @changePageMode="changePageMode"></Apps>
+        <Center v-else-if="pageMode===1"></Center>
         <div v-else>
           <router-view></router-view>
         </div>
@@ -34,11 +36,13 @@
   </div>
 </template>
 <script>
+import Apps from '/views/Apps.vue'
 import Center from '/views/Center.vue'
 
 export default {
   name: 'App',
   components: {
+    Apps,
     Center,
   },
   data () {
@@ -46,6 +50,11 @@ export default {
       pageMode: 0,  // 窗口状态
     }
   },
+  methods: {
+    changePageMode(index){
+      this.pageMode = index
+    }
+  }
 }
 </script>
 

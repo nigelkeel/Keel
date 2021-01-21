@@ -19,8 +19,6 @@ import locale from 'element-plus/lib/locale/lang/zh-cn'
 // 引入 ECharts
 import * as echarts from 'echarts'
 
-
-
 // 引入 iconfont
 import 'https://at.alicdn.com/t/font_2338321_xa5vsf6ll7b.js'
 
