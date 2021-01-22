@@ -6,18 +6,22 @@
         <!-- 日期 -->
         <el-form-item>
           <div style="font-size: 20px; font-weight: 666">{{date}}</div>
-          {{test}}
-          <!-- <el-date-picker
-            v-model="today.date"
-            type="date"
-            placeholder="选择日期"
-            format="YYYY年MM月DD日"
-            :default-time="[new Date(1996, 1, 1, 8, 0, 0)]"
-          ></el-date-picker> -->
         </el-form-item>
         <el-collapse>
           <!-- 健康与日常 -->
           <el-collapse-item title="健康与日常" name="1">
+            <!-- 饮食状况评估 -->
+            <el-form-item label="饮食状况评估">
+              <el-rate v-model="today.diet.state" show-text :texts="rateTexts">></el-rate>
+            </el-form-item>
+            <!-- 饮水量 -->
+            <el-form-item label="饮水量">
+              <el-input-number :min="0" :step="100" v-model="today.diet.waterQuantity" step-strictly></el-input-number>
+            </el-form-item>
+            <!-- 健身状况评估 -->
+            <el-form-item label="健身状况评估">
+              <el-rate v-model="today.fitness.state" show-text :texts="rateTexts">></el-rate>
+            </el-form-item>
             <!-- 步数 -->
             <el-form-item label="步数">
               <el-input-number :min="0" :step="100" v-model="today.fitness.stepCount" step-strictly :controls="false"></el-input-number>
@@ -43,12 +47,20 @@ export default {
       date: "",
       today: {
         date: "", // 日期
+        // 饮食
+        diet: {
+          state: 0, // 饮食状况
+          waterQuantity: 0, // 饮水量
+        },
         // 健身
         fitness: {
+          state: 0, // 健身状况
           stepCount: 0,  // 步数
         },
         log: "", // 日志
-      }
+      },
+      // rate 辅助文字数组
+      rateTexts: ["糟糕", "欠佳", "一般", "良好", "极佳"],
     }
   },
   created () {
@@ -75,6 +87,17 @@ export default {
   .today {
     .el-collapse-item__header{
       font-size: 20px;
+    }
+    .el-form-item__label {
+      width: 100px;
+    }
+    .el-rate {
+      line-height: 50px;
+      .el-rate__text {
+        display: inline-block;
+        margin-top: -13px;
+        margin-left: 30px;
+      }
     }
     .input-text {
       display: inline-block;

@@ -29,9 +29,7 @@
         <Center v-else-if="pageMode===1"></Center>
         <Setting v-else-if="pageMode===3"></Setting>
         <div v-else>
-          <keep-alive>
-            <router-view></router-view>
-          </keep-alive>
+          <router-view></router-view>
         </div>
       </el-main>
     </el-container>
