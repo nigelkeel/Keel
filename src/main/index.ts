@@ -11,8 +11,8 @@ let win: BrowserWindow
 function createWin() {
   // 创建浏览器窗口
   win = new BrowserWindow({
-    width: 1200,
-    height: 800,
+    width: 1920,
+    height: 1080,
     // frame: false, // 隐藏边框
     titleBarStyle: 'customButtonsOnHover',
     webPreferences: {

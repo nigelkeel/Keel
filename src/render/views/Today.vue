@@ -18,8 +18,13 @@
           <el-collapse-item title="健康与日常" name="1">
             <!-- 步数 -->
             <el-form-item label="步数">
-              <!-- <el-input class="input-text" type="number" v-model="today.fitness.stepCount"></el-input> -->
               <el-input-number :min="0" :step="100" v-model="today.fitness.stepCount" step-strictly :controls="false"></el-input-number>
+            </el-form-item>
+          </el-collapse-item>
+          <!-- 日志 -->
+          <el-collapse-item title="日志" name="2">
+            <el-form-item label="日志">
+              <el-input class="input-text" type="textarea" v-model="today.log"></el-input>
             </el-form-item>
           </el-collapse-item>
         </el-collapse>
@@ -37,14 +42,21 @@ export default {
         // 健身
         fitness: {
           stepCount: 0,  // 步数
-        }
+        },
+        log: "", // 日志
       }
     }
   },
   created () {
     // 获取今日数据
-    const initData = this.get('today')
+    const initData = this.$store.get('today')
     if (initData) this.today = initData
+  },
+  beforeUnmount () {
+    // 获取日数据库并保存在日数据库中
+    const result = this.$store.get('days') || {}
+    result[this.today.date.slice(0, 10)] = this.today
+    this.$store.set('days', result)
   },
   watch: {
     // 保存今日数据
