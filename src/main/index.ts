@@ -13,7 +13,7 @@ function createWin() {
   win = new BrowserWindow({
     width: 1200,
     height: 800,
-    frame: false, // 隐藏边框
+    // frame: false, // 隐藏边框
     titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
       // 关闭同源策略

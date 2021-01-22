@@ -145,22 +145,24 @@ export default {
         visualMap: {
             show: false,
             min: 0,
-            max: 10000
+            max: 5000
         },
         calendar: {
-            range: '2021'
+            range: '2021',
+            cellSize: [15, 18],
         },
+        color: ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'],
         series: {
             type: 'heatmap',
             coordinateSystem: 'calendar',
-            data: this.getVirtulData(2021),
+            data: this.getVirtualData(2021),
         }
       });
     },
-    getVirtulData(year) {
+    getVirtualData(year) {
       year = year || '2017';
       var date = +this.$echarts.number.parseDate(year + '-01-01');
-      var end = +this.$echarts.number.parseDate(year + '-12-31');
+      var end = +this.$echarts.number.parseDate(year + '-07-20');
       var dayTime = 3600 * 24 * 1000;
       var data = [];
       for (var time = date; time <= end; time += dayTime) {

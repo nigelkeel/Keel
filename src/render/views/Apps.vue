@@ -36,8 +36,10 @@ export default {
         this.config[i][j] = { title: "", link: "", icon: "", desc: ""}
       }
     }
-    this.config[0][0] = { title: "个人中心", link: "/center", icon: "", desc: "我的个人中心。"}
-    this.config[1][0] = { title: "日历", link: "/cal", icon: "", desc: "我的日历。"}
+    this.config[0][0] = { title: "世界树", link: "/tree", icon: "", desc: "我的世界树。"}
+    this.config[0][1] = { title: "个人中心", link: "/center", icon: "", desc: "我的个人中心。"}
+    this.config[1][0] = { title: "今日", link: "/today", icon: "", desc: "我的一天。"}
+    this.config[1][1] = { title: "日历", link: "/cal", icon: "", desc: "我的日历。"}
     this.config[2][0] = { title: "设置中心", link: "/setting", icon: "", desc: "设置中心。"}
   },
   methods: {
