@@ -1,6 +1,6 @@
 <template>
-  <div class="today">
-    <h1 style="height: 60px; font-size: 40px">今日</h1>
+  <div class="today main">
+    <h1>今日</h1>
     <el-card>
       <el-form>
         <!-- 日期 -->

@@ -1,12 +1,19 @@
 <template>
-  <div class="app">
-    <h1 style="height: 60px; font-size: 40px">日历</h1>
+  <div class="cal main">
+    <h1>日历</h1>
     <el-card>
-      <el-calendar v-model="value" @click="showDrawer=true"></el-calendar>
+      <!-- 日历 -->
+      <el-calendar v-model="value" >
+        <template #dateCell="{data}">
+          <div @click="showDrawer(data)">
+            {{data.day.slice(8)}}
+          </div>
+        </template>
+      </el-calendar>
     </el-card>
     <!-- 抽屉 -->
-    <el-drawer title="我是标题" v-model="showDrawer" :with-header="false">
-      <span>我来啦!</span>
+    <el-drawer v-model="drawer" :with-header="false">
+      <span>{{message}}</span>
     </el-drawer>
   </div>
 </template>
@@ -16,8 +23,18 @@ export default {
   data() {
     return {
       value: new Date(),
-      showDrawer: false,
+      drawer: false,
+      message: "",
     };
+  },
+  methods: {
+    // 打开抽屉
+    showDrawer (date) {
+      this.drawer = true
+      this.message = date
+    },
   },
 };
 </script>
+<style lang="less">
+</style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="tree">
-    <h1 style="height: 60px; font-size: 40px">世界树</h1>
+  <div class="tree main">
+    <h1>世界树</h1>
     <el-card>
       <div id="charts-tree" style="width: 1200px; height: 800px"></div>
     </el-card>

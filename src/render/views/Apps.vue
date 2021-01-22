@@ -1,22 +1,18 @@
 <template>
-  <div class="apps">
-    <h1 style="height: 60px; font-size: 40px">应用中心</h1>
-    <el-row v-for="(row, y) in 7" :key="y">
-      <el-col :span="3" v-for="(col, x) in 8" :key="x">
-        <el-card :style="config[y][x].title ? '' : 'visibility: hidden;'" @click="jump(config[y][x].link)">
-          <svg class="icon" aria-hidden="true" style="width: 20px; height: 20px; color: #666">
-            <use xlink:href="#icon-app"></use>
-          </svg> 
-          <el-tooltip v-if="config[y][x].desc" effect="light">
-            <template #content>
-              {{config[y][x].desc}}
-            </template>
+  <div class="apps main">
+    <h1>应用中心</h1>
+    <div class="boxer">
+      <el-row :gutter="10" v-for="(row, y) in 8" :key="y">
+        <el-col :span="3" v-for="(col, x) in 8" :key="x">
+          <el-card :style="config[y][x].title ? '' : 'visibility: hidden'" @click="jump(config[y][x].link)">
+            <svg class="icon" aria-hidden="true" style="width: 20px; height: 20px; color: #666">
+              <use xlink:href="#icon-app"></use>
+            </svg> 
             <div>{{config[y][x].title||"此处暂无"}}</div> 
-          </el-tooltip>
-          <div v-else>{{config[y][x].title||"此处暂无"}}</div> 
-        </el-card>
-      </el-col>
-    </el-row>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 <script>
@@ -33,14 +29,14 @@ export default {
     for(let i=0; i<this.config.length; i++) {
       this.config[i] = new Array(8)
       for(let j=0; j<this.config[i].length; j++) {
-        this.config[i][j] = { title: "", link: "", icon: "", desc: ""}
+        this.config[i][j] = { title: "", link: "", icon: ""}
       }
     }
-    this.config[0][0] = { title: "世界树", link: "/tree", icon: "", desc: "我的世界树。"}
-    this.config[0][1] = { title: "个人中心", link: "/center", icon: "", desc: "我的个人中心。"}
-    this.config[1][0] = { title: "今日", link: "/today", icon: "", desc: "我的一天。"}
-    this.config[1][1] = { title: "日历", link: "/cal", icon: "", desc: "我的日历。"}
-    this.config[2][0] = { title: "设置中心", link: "/setting", icon: "", desc: "设置中心。"}
+    this.config[0][0] = { title: "世界树", link: "/tree", icon: ""}
+    this.config[0][1] = { title: "个人中心", link: "/center", icon: ""}
+    this.config[1][0] = { title: "今日", link: "/today", icon: ""}
+    this.config[1][1] = { title: "日历", link: "/cal", icon: ""}
+    this.config[2][0] = { title: "设置中心", link: "/setting", icon: ""}
   },
   methods: {
     jump (link) {
@@ -59,16 +55,18 @@ export default {
 };
 </script>
 <style lang="less">
+  @import "../assets/css/color.less";
   .apps {
     .el-col {
-      padding: 5px;
+      padding-bottom: 10px;
     }
     .el-card {
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 90px;
       svg {
-        margin-left: -16px;
+        margin-left: -24px;
       }
       div {
         width: 70px;
@@ -77,10 +75,12 @@ export default {
         justify-content: center;
         text-align: center;
         margin-left: 10px; 
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: 666;
       }
       &:hover {
-        background-color: #eee;
+        color: #fff;
+        background-color: @c1;
       }
     }
   }

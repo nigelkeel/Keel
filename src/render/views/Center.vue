@@ -1,12 +1,12 @@
 <template>
-  <div class="center">
-    <h1 style="height: 60px; font-size: 40px">个人中心</h1>
-    <div>
+  <div class="center main">
+    <h1>个人中心</h1>
+    <div class="boxer">
       <!-- 第一行 -->
-      <el-row>
+      <el-row :gutter="10">
         <!-- 当前时间 -->
-        <el-col :span="6" class="col">
-          <el-card :body-style="{ padding: '10px' }" style="width:250px">
+        <el-col :span="4" class="col">
+          <el-card>
             <!-- 数据显示 -->
             <div style="font-size: 30px">
               <span>{{current.getHours().toString().padStart(2, '0')}}:</span>
@@ -19,8 +19,8 @@
           </el-card>
         </el-col>
         <!-- 人生多少天 -->
-        <el-col :span="6" class="col">
-          <el-card :body-style="{ padding: '10px' }" style="width:250px">
+        <el-col :span="4" class="col">
+          <el-card>
             <!-- 提示 -->
             <el-tooltip placement="top" effect="light">
               <template #content>
@@ -32,61 +32,42 @@
           </el-card>
         </el-col>
         <!-- 位置和天气 -->
-        <el-col :span="6" class="col">
-          <el-card :body-style="{ padding: '10px' }" style="width:250px">
+        <el-col :span="4" class="col">
+          <el-card>
             <!-- 数据显示 -->
             <div style="font-size: 30px">{{city}}</div>
             <div style="font-size: 16px">{{weather}}</div>
           </el-card>
         </el-col>
-        <!-- 成就点数 -->
-        <el-col :span="6" class="col">
-          <el-card :body-style="{ padding: '10px' }" style="width:250px">
-            <!-- 数据显示 -->
-            <div style="font-size: 30px">100</div>
-            <div style="font-size: 16px">成就点</div>
-          </el-card>
-        </el-col>
-      </el-row>
-      <!-- 第二行 -->
-      <el-row>
         <!-- 健康 -->
-        <el-col :span="6" class="col" >
-          <el-card :body-style="{ padding: '10px' }" style="width:250px">
+        <el-col :span="4" class="col" >
+          <el-card>
             <!-- 数据显示 -->
             <div style="font-size: 30px">90</div>
             <div style="font-size: 16px">健康指数</div>
           </el-card>
         </el-col>
         <!-- 发展 -->
-        <el-col :span="6" class="col" >
-          <el-card :body-style="{ padding: '10px' }" style="width:250px">
+        <el-col :span="4" class="col" >
+          <el-card>
             <!-- 数据显示 -->
             <div style="font-size: 30px">90</div>
             <div style="font-size: 16px">发展指数</div>
           </el-card>
         </el-col>
         <!-- 幸福 -->
-        <el-col :span="6" class="col" >
-          <el-card :body-style="{ padding: '10px' }" style="width:250px">
+        <el-col :span="4" class="col" >
+          <el-card>
             <!-- 数据显示 -->
             <div style="font-size: 30px">90</div>
             <div style="font-size: 16px">幸福指数</div>
           </el-card>
         </el-col>
-        <!-- 积分 -->
-        <el-col :span="6" class="col" >
-          <el-card :body-style="{ padding: '10px' }" style="width:250px">
-            <!-- 数据显示 -->
-            <div style="font-size: 30px">1024</div>
-            <div style="font-size: 16px">秩序点数</div>
-          </el-card>
-        </el-col>
       </el-row>
-      <!-- 第三行 -->
+      <!-- 第二行 -->
       <el-row class="echarts">
         <el-col :span="24" class="col">
-          <el-card :body-style="{ padding: '10px' }" style="padding-right: 5px">
+          <el-card>
             <div id="echarts" style="width: 900px; height:300px;"></div>
           </el-card>
         </el-col>
@@ -179,7 +160,7 @@ export default {
 <style lang="less">
   .center {
     .col {
-      padding: 5px;
+      padding-bottom: 10px;
     }
     .el-card {
       height: 120px;

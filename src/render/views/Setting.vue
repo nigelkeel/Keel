@@ -1,6 +1,6 @@
 <template>
-  <div class="setting">
-    <h1 style="height: 60px; font-size: 40px">设置中心</h1>
+  <div class="setting main">
+    <h1>设置中心</h1>
     <el-card>
       <el-form>
         <el-collapse>

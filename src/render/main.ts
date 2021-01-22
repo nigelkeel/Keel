@@ -4,10 +4,6 @@ import App from './App.vue'
 const { ipcRenderer } = require('electron')
 import { store, isdev } from '/utils/index'
 
-// 引入全局样式
-import './index.css'
-import './assets/css/reset.css'
-
 // 引入 VueRouter
 import VueRouter from "./router"
 
@@ -23,6 +19,11 @@ import * as echarts from 'echarts'
 
 // 引入 iconfont
 import 'https://at.alicdn.com/t/font_2338321_xa5vsf6ll7b.js'
+
+// 引入全局样式
+import './index.css'
+import './assets/css/reset.css'
+import './assets/css/layout.css'
 
 // console.log('ipcRenderer:', ipcRenderer)
 // console.log('electron is dev', isdev)

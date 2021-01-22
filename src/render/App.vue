@@ -12,7 +12,6 @@
           <!-- 按钮 -->
           <div class="tabs">
             <el-button circle v-for="(item, index) in 3" :key="index" @click="pageMode=index">
-              {{index}}
               <svg class="icon" aria-hidden="true" style="width: 33px; height: 33px; ">
                 <use xlink:href="#icon-app"></use>
               </svg>  
