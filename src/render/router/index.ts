@@ -7,6 +7,7 @@ import Tree from "/views/Tree.vue"
 import Cal from "/views/Calendar.vue"
 import Today from "/views/Today.vue"
 import Line from "/views/Line.vue"
+import Tasks from "/views/Tasks.vue"
 
 const routes:any =  [
   { path: "/", component: Apps },
@@ -15,6 +16,7 @@ const routes:any =  [
   { path: "/cal", component: Cal },
   { path: "/today", component: Today },
   { path: "/line", component: Line },
+  { path: "/tasks", component: Tasks },
 ]
 
 export default createRouter({

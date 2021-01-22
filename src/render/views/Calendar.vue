@@ -6,7 +6,12 @@
       <el-calendar v-model="value" >
         <template #dateCell="{data}">
           <div @click="showDrawer(data)">
-            {{data.day.slice(8)}}
+            <!-- 时间 -->
+            <span style="font-size: 30px">{{data.day.slice(8)}}</span>
+            <!-- 年初标记 -->
+            <el-tag v-if="data.date.getMonth()===0&&data.date.getDate()===1">{{data.date.getFullYear()}}年</el-tag>
+            <!-- 月初标记 -->
+            <el-tag v-if="data.day.slice(8)=='01'">{{data.date.getMonth()+1}}月</el-tag>
           </div>
         </template>
       </el-calendar>
@@ -37,4 +42,9 @@ export default {
 };
 </script>
 <style lang="less">
+  .cal {
+    .el-tag {
+      margin-right: 5px;
+    }
+  }
 </style>

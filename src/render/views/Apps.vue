@@ -20,24 +20,91 @@ export default {
   name: "Apps", 
   data() {
     return {
-      config: null,
+      config: [
+        [
+          { title: "世界树", link: "/tree", icon: ""},
+          { title: "个人中心", link: "/center", icon: ""},
+          { title: "设置中心", link: "/setting", icon: ""},
+          { title: "想法", link: "/", icon: ""},
+          { title: "规则管理", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+        ],
+        [
+          { title: "秩序中心", link: "/", icon: ""},
+          { title: "今日", link: "/today", icon: ""},
+          { title: "日历", link: "/cal", icon: ""},
+          { title: "任务中心", link: "/", icon: ""},
+          { title: "计划中心", link: "/", icon: ""},
+          { title: "日志管理", link: "/", icon: ""},
+          { title: "积分中心", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+        ],
+        [
+          { title: "健康中心", link: "/", icon: ""},
+          { title: "日常管理", link: "/", icon: ""},
+          { title: "健身中心", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "理想生活实验室", link: "/", icon: ""},
+          { title: "收支管理", link: "/", icon: ""},
+        ],
+        [
+          { title: "知识管理", link: "/", icon: ""},
+          { title: "学习", link: "/", icon: ""},
+          { title: "课程", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "知识库", link: "/", icon: ""},
+        ],
+        [
+          { title: "发展中心", link: "/", icon: ""},
+          { title: "工作管理", link: "/", icon: ""},
+          { title: "职业生涯", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "成就", link: "/", icon: ""},
+        ],
+        [
+          { title: "社交中心", link: "/line", icon: ""},
+          { title: "家庭", link: "/", icon: ""},
+          { title: "亲密关系", link: "/", icon: ""},
+          { title: "朋友", link: "/", icon: ""},
+          { title: "社交媒体", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "记忆碎片", link: "/", icon: ""},
+        ],
+        [
+          { title: "爱好中心", link: "/", icon: ""},
+          { title: "音乐", link: "/", icon: ""},
+          { title: "阅读", link: "/", icon: ""},
+          { title: "影视", link: "/", icon: ""},
+          { title: "电子游戏", link: "/", icon: ""},
+          { title: "幻想辞典", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "地图", link: "/", icon: ""},
+        ],
+        [
+          { title: "数据中心", link: "/", icon: ""},
+          { title: "安全中心", link: "/", icon: ""},
+          { title: "开发中心", link: "/", icon: ""},
+          { title: "设备管理", link: "/", icon: ""},
+          { title: "文件管理", link: "/", icon: ""},
+          { title: "应用管理", link: "/", icon: ""},
+          { title: "", link: "/", icon: ""},
+          { title: "工具箱", link: "/", icon: ""},
+        ],
+      ],
     }
   },
   created() {
-    // 数据配置
-    this.config = new Array(8)
-    for(let i=0; i<this.config.length; i++) {
-      this.config[i] = new Array(8)
-      for(let j=0; j<this.config[i].length; j++) {
-        this.config[i][j] = { title: "", link: "", icon: ""}
-      }
-    }
-    this.config[0][0] = { title: "世界树", link: "/tree", icon: ""}
-    this.config[0][1] = { title: "个人中心", link: "/center", icon: ""}
-    this.config[1][0] = { title: "今日", link: "/today", icon: ""}
-    this.config[1][1] = { title: "日历", link: "/cal", icon: ""}
-    this.config[2][0] = { title: "社交中心", link: "/line", icon: ""}
-    this.config[3][0] = { title: "设置中心", link: "/setting", icon: ""}
   },
   methods: {
     jump (link) {
