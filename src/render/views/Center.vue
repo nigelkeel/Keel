@@ -94,13 +94,16 @@ export default {
   },
   created () {
     // 获取初始数据
-    const initData = this.$store.get('user')
-    if (initData) this.birthday = initData.birthday
+    const userData = this.$store.get('user')
+    if (userData) {
+      this.birthday = userData.birthday
+      this.city = userData.city
+    }
     // 定期更新时间
     const updateTimer = setInterval(()=>{
       this.current = new Date()
       this.computedLifeIndex()
-    }, 100)
+    }, 200)
   },
   mounted () {
     this.drawLine()

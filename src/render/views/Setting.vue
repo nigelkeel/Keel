@@ -4,7 +4,6 @@
     <el-card>
       <el-form>
         <el-collapse>
-          {{this.tempBirthday}}
           <!-- 资料设置 -->
           <el-collapse-item title="资料设置" name="1">
             <!-- 昵称设置 -->
@@ -22,6 +21,10 @@
                 :default-time="[new Date(1996, 1, 1, 8, 0, 0)]"
               ></el-date-picker>
             </el-form-item>
+            <!-- 设置城市 -->
+            <el-form-item label="城市">
+              <el-input class="input-text" v-model="user.city"></el-input>
+            </el-form-item>
           </el-collapse-item>
           <!-- 系统设置 -->
           <el-collapse-item title="系统设置" name="2">
@@ -38,8 +41,9 @@ export default {
   data() {
     return {
       user: {
-        name: "",
-        birthday: ""
+        name: "", // 昵称
+        birthday: "", // 生日
+        city: "", // 城市
       },
       tempBirthday: "",
     };
