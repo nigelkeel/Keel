@@ -6,6 +6,7 @@ import Setting from "/views/Setting.vue"
 import Tree from "/views/Tree.vue"
 import Cal from "/views/Calendar.vue"
 import Today from "/views/Today.vue"
+import Line from "/views/Line.vue"
 
 const routes:any =  [
   { path: "/", component: Apps },
@@ -13,6 +14,7 @@ const routes:any =  [
   { path: "/tree", component: Tree },
   { path: "/cal", component: Cal },
   { path: "/today", component: Today },
+  { path: "/line", component: Line },
 ]
 
 export default createRouter({

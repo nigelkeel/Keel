@@ -36,7 +36,8 @@ export default {
     this.config[0][1] = { title: "个人中心", link: "/center", icon: ""}
     this.config[1][0] = { title: "今日", link: "/today", icon: ""}
     this.config[1][1] = { title: "日历", link: "/cal", icon: ""}
-    this.config[2][0] = { title: "设置中心", link: "/setting", icon: ""}
+    this.config[2][0] = { title: "社交中心", link: "/line", icon: ""}
+    this.config[3][0] = { title: "设置中心", link: "/setting", icon: ""}
   },
   methods: {
     jump (link) {
