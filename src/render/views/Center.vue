@@ -68,7 +68,7 @@
       <el-row class="echarts">
         <el-col :span="24" class="col">
           <el-card>
-            <div id="echarts" style="width: 900px; height:300px;"></div>
+            <div id="echarts" style="width: 1200px; height:300px;"></div>
           </el-card>
         </el-col>
       </el-row>
@@ -120,9 +120,9 @@ export default {
     // 绘制图表
     drawLine(){
       // 基于准备好的dom，初始化echarts实例
-      let myChart = this.$echarts.init(document.getElementById('echarts'))
+      let chart = this.$echarts.init(document.getElementById('echarts'))
       // 绘制图表
-      myChart.setOption({
+      chart.setOption({
         visualMap: {
             show: false,
             min: 0,
@@ -130,7 +130,7 @@ export default {
         },
         calendar: {
             range: '2021',
-            cellSize: [15, 18],
+            cellSize: [20, 20],
         },
         color: ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'],
         series: {
@@ -143,7 +143,7 @@ export default {
     getVirtualData(year) {
       year = year || '2017';
       var date = +this.$echarts.number.parseDate(year + '-01-01');
-      var end = +this.$echarts.number.parseDate(year + '-07-20');
+      var end = +this.$echarts.number.parseDate(year + '-12-31');
       var dayTime = 3600 * 24 * 1000;
       var data = [];
       for (var time = date; time <= end; time += dayTime) {
