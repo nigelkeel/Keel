@@ -4,6 +4,7 @@
     <el-card>
       <el-form>
         <el-collapse>
+          {{this.tempBirthday}}
           <!-- 资料设置 -->
           <el-collapse-item title="资料设置" name="1">
             <!-- 昵称设置 -->
@@ -13,10 +14,11 @@
             <!-- 生日设置 -->
             <el-form-item label="生日">
               <el-date-picker
-                v-model="user.birthday"
+                v-model="tempBirthday"
                 type="date"
                 placeholder="选择日期"
                 format="YYYY年MM月DD日"
+                @change="updateBirthday"
                 :default-time="[new Date(1996, 1, 1, 8, 0, 0)]"
               ></el-date-picker>
             </el-form-item>
@@ -30,6 +32,7 @@
   </div>
 </template>
 <script>
+import { getYYYYmmDD } from '/utils/time'
 export default {
   name: "Setting",
   data() {
@@ -38,12 +41,16 @@ export default {
         name: "",
         birthday: ""
       },
+      tempBirthday: "",
     };
   },
   created () {
     // 获取设置数据
-    const initData = this.$store.get('user')
-    if (initData) this.user = initData
+    const userData = this.$store.get('user')
+    if (userData) {
+      this.user = userData
+      this.tempBirthday = userData.birthday
+    }
   },
   watch: {
     user: {
@@ -54,8 +61,13 @@ export default {
     }
   },
   methods: {
+    // 更新生日
+    updateBirthday () {
+      console.log(this.tempBirthday)
+      this.user.birthday = getYYYYmmDD(this.tempBirthday)
+    },
   }
-};
+}
 </script>
 <style lang="less">
   .setting {

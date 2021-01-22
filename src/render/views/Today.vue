@@ -5,13 +5,15 @@
       <el-form>
         <!-- 日期 -->
         <el-form-item>
-          <el-date-picker
+          <div style="font-size: 20px; font-weight: 666">{{date}}</div>
+          {{test}}
+          <!-- <el-date-picker
             v-model="today.date"
             type="date"
             placeholder="选择日期"
             format="YYYY年MM月DD日"
             :default-time="[new Date(1996, 1, 1, 8, 0, 0)]"
-          ></el-date-picker>
+          ></el-date-picker> -->
         </el-form-item>
         <el-collapse>
           <!-- 健康与日常 -->
@@ -33,12 +35,14 @@
   </div>
 </template>
 <script>
+import { getYYYYmmDD } from "/utils/time"
 export default {
   name: "Today",
   data () {
     return {
+      date: "",
       today: {
-        date: new Date(), // 日期
+        date: "", // 日期
         // 健身
         fitness: {
           stepCount: 0,  // 步数
@@ -48,31 +52,29 @@ export default {
     }
   },
   created () {
-    // 获取今日数据
-    const initData = this.$store.get('today')
-    if (initData) this.today = initData
+    // 获取今天日期
+    this.date = this.today.date = getYYYYmmDD()
+    // 获取日数据库
+    const result = this.$store.get('days') || {}
+    result[this.date] ? this.today = result[this.date] : ""
   },
   beforeUnmount () {
     // 获取日数据库并保存在日数据库中
     const result = this.$store.get('days') || {}
-    result[this.today.date.slice(0, 10)] = this.today
+    result[this.date] = this.today
     this.$store.set('days', result)
   },
   watch: {
-    // 保存今日数据
-    today: {
-      handler (newData, oldData) {
-        this.$store.set('today', newData)
-      },
-      deep: true
-    }
-  }
+  },
+  methods: {
+    
+  },
 };
 </script>
 <style lang="less">
   .today {
     .el-collapse-item__header{
-      font-size: 30px;
+      font-size: 20px;
     }
     .input-text {
       display: inline-block;
