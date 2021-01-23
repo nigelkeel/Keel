@@ -1,8 +1,9 @@
 // 路由配置文件
 import { createRouter, createWebHistory } from 'vue-router'
+import Apps from '/views/Apps.vue'
 
 const routes:any =  [
-  { path: '/', component: import('/views/App.vue') },
+  { path: '/', component: Apps },
   { path: '/setting', component: import('/views/Setting.vue') },
   { path: '/tree', component: import('/views/Tree.vue') },
   { path: '/cal', component: import('/views/Calendar.vue') },
