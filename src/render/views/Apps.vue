@@ -99,7 +99,7 @@ export default {
           { title: "文件管理", link: "/", icon: ""},
           { title: "应用管理", link: "/", icon: ""},
           { title: "", link: "/", icon: ""},
-          { title: "工具箱", link: "/", icon: ""},
+          { title: "工具箱", link: "/tools", icon: ""},
         ],
       ],
     }

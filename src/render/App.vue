@@ -29,7 +29,7 @@
         <Center v-else-if="pageMode===1"></Center>
         <Setting v-else-if="pageMode===3"></Setting>
         <div v-else>
-          <router-view></router-view>
+          <router-view v-if="isRouterAlive"></router-view>
         </div>
       </el-main>
     </el-container>
@@ -47,14 +47,27 @@ export default {
     Setting,
     Center,
   },
+  provide () {
+    return {
+      reload: this.reload
+    }
+  },
   data () {
     return {
       pageMode: 0,  // 窗口状态
+      isRouterAlive: true
     }
   },
   methods: {
     changePageMode(index){
       this.pageMode = index
+    },
+    // 重载路由组件
+    reload (){
+      this.isRouterAlive = false
+      this.$nextTick(()=>{
+        this.isRouterAlive = true
+      })
     }
   }
 }

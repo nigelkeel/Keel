@@ -2,48 +2,54 @@
   <div class="tree main">
     <h1>世界树</h1>
     <el-card>
+      <el-button @click="isEditState = true">编辑</el-button>
       <div id="charts-tree" style="width: 1200px; height: 800px"></div>
     </el-card>
+    <!-- 编辑对话框 -->
+    <el-dialog
+      title="编辑世界树"
+      v-model="isEditState"
+      width="40%"
+      @close="this.reload()"
+    >
+      <el-tree
+        :data="data.children"
+        node-key="value"
+        :props="{ label: 'name', children: 'children'}"
+        draggable>
+      </el-tree>
+    </el-dialog>
   </div>
 </template>
 <script>
 export default {
   name: "Tree",
+  inject: ['reload'], 
   data() {
     return {
+      isEditState: false, 
       data: {
         name: "世界树",
-        children: [
-          {
-            name: "核心",
-          },
-          {
-            name: "秩序",
-          },
-          {
-            name: "日常",
-            children: [
-              { name: "健康中心", value: "health" },
-            ],
-          },
-          {
-            name: "知识",
-          },
-          {
-            name: "发展",
-          },
-          {
-            name: "连接",
-          },
-          {
-            name: "爱好",
-          },
-        ],
+        value: "root",
+        children: [],
       },
     };
   },
-  mounted() {
+  created () {
+    // 获取世界树数据
+    const result = this.$store.get('tree')
+    if (result) this.data = result
+  },
+  mounted () {
     this.drawCharts();
+  },
+  watch: {
+    data: {
+      handler (newData, oldData) {
+        this.$store.set('tree', newData)
+      },
+      deep: true
+    }
   },
   methods: {
     // 绘制图表
