@@ -8,7 +8,7 @@
             <svg class="icon" aria-hidden="true" style="width: 20px; height: 20px; color: #666">
               <use xlink:href="#icon-app"></use>
             </svg> 
-            <div>{{config[y][x].title||"此处暂无"}}</div> 
+            <div :style="config[y][x].link==='/' ? 'color: #ddd' : '' ">{{config[y][x].title||"此处暂无"}}</div> 
           </el-card>
         </el-col>
       </el-row>
@@ -35,7 +35,7 @@ export default {
           { title: "秩序中心", link: "/", icon: ""},
           { title: "今日", link: "/today", icon: ""},
           { title: "日历", link: "/cal", icon: ""},
-          { title: "任务中心", link: "/", icon: ""},
+          { title: "任务箱", link: "/tasks", icon: ""},
           { title: "计划中心", link: "/", icon: ""},
           { title: "日志管理", link: "/", icon: ""},
           { title: "积分中心", link: "/", icon: ""},
@@ -44,8 +44,8 @@ export default {
         [
           { title: "健康中心", link: "/", icon: ""},
           { title: "日常管理", link: "/", icon: ""},
-          { title: "健身中心", link: "/", icon: ""},
-          { title: "", link: "/", icon: ""},
+          { title: "健身管理", link: "/", icon: ""},
+          { title: "宅事务", link: "/", icon: ""},
           { title: "", link: "/", icon: ""},
           { title: "", link: "/", icon: ""},
           { title: "理想生活实验室", link: "/", icon: ""},
@@ -77,8 +77,8 @@ export default {
           { title: "亲密关系", link: "/", icon: ""},
           { title: "朋友", link: "/", icon: ""},
           { title: "社交媒体", link: "/", icon: ""},
-          { title: "", link: "/", icon: ""},
-          { title: "", link: "/", icon: ""},
+          { title: "动态", link: "/", icon: ""},
+          { title: "词库", link: "/", icon: ""},
           { title: "记忆碎片", link: "/", icon: ""},
         ],
         [

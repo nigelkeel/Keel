@@ -91,14 +91,6 @@ export default {
     .el-form-item__label {
       width: 100px;
     }
-    .el-rate {
-      line-height: 50px;
-      .el-rate__text {
-        display: inline-block;
-        margin-top: -13px;
-        margin-left: 30px;
-      }
-    }
     .input-text {
       display: inline-block;
       width: 220px;
