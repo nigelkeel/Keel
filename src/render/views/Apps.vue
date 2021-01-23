@@ -49,7 +49,7 @@ export default {
           { title: "", link: "/", icon: ""},
           { title: "", link: "/", icon: ""},
           { title: "理想生活实验室", link: "/", icon: ""},
-          { title: "收支管理", link: "/", icon: ""},
+          { title: "收支管理", link: "/money", icon: ""},
         ],
         [
           { title: "知识管理", link: "/", icon: ""},
