@@ -1,41 +1,56 @@
 <template>
   <div class="today main">
     <h1>今日</h1>
-    <el-card>
-      <el-form>
-        <!-- 日期 -->
-        <el-form-item>
-          <div style="font-size: 20px; font-weight: 666">{{date}}</div>
-        </el-form-item>
-        <el-collapse>
-          <!-- 健康与日常 -->
-          <el-collapse-item title="健康与日常" name="1">
-            <!-- 饮食状况评估 -->
-            <el-form-item label="饮食状况评估">
-              <el-rate v-model="today.diet.state" show-text :texts="rateTexts">></el-rate>
-            </el-form-item>
-            <!-- 饮水量 -->
-            <el-form-item label="饮水量">
-              <el-input-number :min="0" :step="100" v-model="today.diet.waterQuantity" step-strictly></el-input-number>
-            </el-form-item>
-            <!-- 健身状况评估 -->
-            <el-form-item label="健身状况评估">
-              <el-rate v-model="today.fitness.state" show-text :texts="rateTexts">></el-rate>
-            </el-form-item>
-            <!-- 步数 -->
-            <el-form-item label="步数">
-              <el-input-number :min="0" :step="100" v-model="today.fitness.stepCount" step-strictly :controls="false"></el-input-number>
-            </el-form-item>
-          </el-collapse-item>
-          <!-- 日志 -->
-          <el-collapse-item title="日志" name="2">
-            <el-form-item label="日志">
-              <el-input class="input-text" type="textarea" v-model="today.log"></el-input>
-            </el-form-item>
-          </el-collapse-item>
-        </el-collapse>
-      </el-form>
-    </el-card>
+    <div class="boxer">
+      <el-row :gutter="10">
+        <el-col :span="6">
+          <el-card>
+            <el-form>
+              <!-- 日期 -->
+              <el-form-item>
+                <div style="font-size: 30px; font-weight: 666">{{date}}</div>
+              </el-form-item>
+              <el-collapse>
+                <!-- 健康与日常 -->
+                <el-collapse-item title="健康与日常" name="1">
+                  <!-- 饮食状况评估 -->
+                  <el-form-item label="饮食状况评估">
+                    <el-rate v-model="today.diet.state" show-text :texts="rateTexts">></el-rate>
+                  </el-form-item>
+                  <!-- 饮水量 -->
+                  <el-form-item label="饮水量">
+                    <el-input-number :min="0" :step="100" v-model="today.diet.waterQuantity" step-strictly></el-input-number>
+                  </el-form-item>
+                  <!-- 健身状况评估 -->
+                  <el-form-item label="健身状况评估">
+                    <el-rate v-model="today.fitness.state" show-text :texts="rateTexts">></el-rate>
+                  </el-form-item>
+                  <!-- 步数 -->
+                  <el-form-item label="步数">
+                    <el-input-number :min="0" :step="100" v-model="today.fitness.stepCount" step-strictly :controls="false"></el-input-number>
+                  </el-form-item>
+                </el-collapse-item>
+                <!-- 日志 -->
+                <el-collapse-item title="日志" name="2">
+                  <el-form-item label="日志">
+                    <el-input class="input-text" type="textarea" v-model="today.log"></el-input>
+                  </el-form-item>
+                </el-collapse-item>
+              </el-collapse>
+            </el-form>
+          </el-card>          
+        </el-col>
+        <el-col :span="6">
+          <el-card>健康</el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card>发展</el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card>幸福</el-card>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 <script>
