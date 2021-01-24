@@ -45,7 +45,7 @@ export default {
   },
   watch: {
     data: {
-      handler (newData, oldData) {
+      handler (newData, oldData){
         this.$store.set('tree', newData)
       },
       deep: true

@@ -12,11 +12,18 @@
           <el-card>
             <h2>所有任务</h2>
             <!-- 展示数据 -->
-            <el-table :data="tasks">
-              <!-- 完成按钮 -->
+            <el-table 
+              :data="tasks" 
+              @row-click="selectTask"
+              @selection="handleSelectionTask">
+            >
+              <!-- 任务完成情况 -->
                <el-table-column
-                type="selection"
+                prop="isAccomplish"
                 width="55">
+                <template #default="scope">
+                  <el-checkbox v-model="scope.row.isAccomplish" @change="scope.row.accomplishTime=Date.now()"></el-checkbox>
+                </template>
               </el-table-column>
               <!-- 任务名称 -->
               <el-table-column
@@ -30,9 +37,19 @@
         <el-col :span="10">
           <el-card>
             <h2>任务详情</h2>
-            <!-- 展示数据 -->
-            <el-table :data="[]">
-            </el-table>
+            <el-form v-if="currentTask">
+              <el-form-item label="任务序列">{{currentTask.id}}</el-form-item>
+              <el-form-item label="任务名称">{{currentTask.name}}</el-form-item>
+              <el-form-item label="任务类型">{{currentTask.type}}</el-form-item>
+              <el-form-item label="任务等级">
+                {{currentTask.level}}+ {{taskLevelTexts[currentTask.level-1]}}
+              </el-form-item>
+              <el-form-item label="开始时间">{{currentTask.date[0]}}</el-form-item>
+              <el-form-item label="截止时间">{{currentTask.date[1]}}</el-form-item>
+              <el-form-item label="预计耗时">{{currentTask.timeConsuming}}分钟</el-form-item>
+              <el-form-item label="任务描述">{{currentTask.remarks}}</el-form-item>
+            </el-form>
+            <el-empty v-else></el-empty>
           </el-card>
         </el-col>
       </el-row>
@@ -88,15 +105,18 @@
   </div>
 </template>
 <script>
+import { cloneDeep } from 'lodash' 
+import { getYYYYmmDD } from '/utils/time'
 export default {
   name: "Tasks",
-  data () {
+  data (){
     return {
       showDialog: false, 
       isEdit: false, 
-      currentTaskId: 0, // 当前选中的任务id
+      currentTask: null, // 当前选中的任务对象
       // 新建任务暂存区
       defaultTask: {
+        id: 0,
         name: "", // 任务名称
         type: "日常", // 任务类型
         // 任务时限
@@ -107,6 +127,7 @@ export default {
         // -- 编辑特有 --
         taskProgress: 0, // 任务进度
         isAccomplish: false, // 任务是否已经完成
+        accomplishTime: null, // 任务完成时间
         // -- 自动生成 --
         createTime: new Date(), // 任务创建时间
         // -- 后续更新
@@ -115,42 +136,63 @@ export default {
         project: "", // 所属项目
         cost: 0, // 预计花费
         reward: 0, // 任务积分奖励
+
       },
-      defaultTaskInit: {}, 
+      defaultTaskInit: {}, // 新建任务默认数据对象
       // 新建任务类型可选项
       taskTypeList: [ "日常", "工作", "委托", "杂项", ], 
       taskLevelTexts: ["无关紧要", "一般", "普通", "重要", "核心"],
       // 任务数据库
       tasks: [],
+      taskIndex: 0, 
     }
   },
-  created () {
+  created (){
     // 拷贝一份初始数据
-    this.defaultTaskInit = Object.assign({}, this.defaultTask);
+    this.defaultTaskInit = cloneDeep(this.defaultTask);
     // 获取任务数据库
-    const result = this.$store.get('tasks') || []
-    this.tasks = Object.assign([], result)
+    this.tasks = this.$store.get('tasks') || []
+    // 获取id序列
+    this.taskIndex = this.$store.get('indexTask') || 0
   },
   watch: {
     tasks: {
-      handler (newData, oldData) {
-        this.$store.set('tasks', newData)
+      handler (data){
+        this.$store.set('tasks', data)
       },
       deep: true
+    },
+    taskIndex: {
+      handler (data){
+        this.$store.set('indexTask', this.taskIndex)
+      }
     }
   },
   methods: {
     // 新建任务与编辑任务
-    addOrEditTask (id) {
+    addOrEditTask (id){
       this.isEdit = id ? true : false
       this.showDialog = true 
+      if (!id){
+        // 重置数据
+        this.defaultTask = cloneDeep(this.defaultTaskInit)
+        // 获取id
+        this.defaultTask.id = ++this.taskIndex
+      }
     },
     // 保存任务
-    saveTask () {
+    saveTask (){
       this.showDialog = false
-      this.tasks.push(Object.assign({}, this.defaultTask))
-      // 重置数据
-      this.defaultTask = Object.assign({}, this.defaultTaskInit)
+      this.tasks.push(cloneDeep(this.defaultTask))
+    }, 
+    // 选中任务
+    selectTask (data, data_, e){
+      this.currentTask = cloneDeep(data)
+    },
+    // 操作任务完成与否
+    handleSelectionTask (data){
+      data.isAccomplish = !data.isAccomplish
+      console.log(data)
     }
   },
 };
@@ -166,5 +208,9 @@ export default {
     .el-form-item__label {
       width: 100px;
     }
+    .el-table-column--selection .cell {
+      padding-left: 10px;
+      padding-right: 10px;
+    } 
   }
 </style>
