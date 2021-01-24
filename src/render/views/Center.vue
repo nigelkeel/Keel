@@ -58,9 +58,46 @@
         <!-- 幸福 -->
         <el-col :span="4" class="col" >
           <el-card>
-            <!-- 数据显示 -->
             <div style="font-size: 30px">90</div>
             <div style="font-size: 16px">幸福指数</div>
+          </el-card>
+        </el-col>
+      </el-row>
+      <el-row :gutter="10">
+        <el-col :span="4" class="col">
+          <el-card>
+            <div style="font-size: 30px">1024</div>
+            <div style="font-size: 16px">信用点</div> 
+          </el-card>
+        </el-col>
+        <el-col :span="4" class="col">
+          <el-card>
+            <div style="font-size: 30px">123</div>
+            <div style="font-size: 16px">成就点</div> 
+          </el-card>
+        </el-col>
+        <el-col :span="4" class="col">
+          <el-card>
+            <div style="font-size: 30px">48</div>
+            <div style="font-size: 16px">任务数</div> 
+          </el-card>
+        </el-col>
+        <el-col :span="4" class="col">
+          <el-card>
+            <div style="font-size: 30px">120</div>
+            <div style="font-size: 16px">知识模块</div> 
+          </el-card>
+        </el-col>
+        <el-col :span="4" class="col">
+          <el-card>
+            <div style="font-size: 30px">1200</div>
+            <div style="font-size: 16px">可用资金</div> 
+          </el-card>
+        </el-col>
+        <el-col :span="4" class="col">
+          <el-card>
+            <div style="font-size: 30px">148</div>
+            <div style="font-size: 16px">联系人</div> 
           </el-card>
         </el-col>
       </el-row>
@@ -83,7 +120,7 @@
 
 export default {
   name: "Center",
-  data () {
+  data (){
     return {
       current: new Date(),
       lifeIndex: 0, 
@@ -92,7 +129,7 @@ export default {
       weather: '多云 / 16℃ '
     }
   },
-  created () {
+  created (){
     // 获取初始数据
     const userData = this.$store.get('user')
     if (userData) {
@@ -105,18 +142,18 @@ export default {
       this.computedLifeIndex()
     }, 200)
   },
-  mounted () {
+  mounted (){
     this.drawLine()
   },
   methods: {
     // 计算人生多少天
-    computedLifeIndex () {
+    computedLifeIndex (){
       const birthTime = Date.parse(new Date(this.birthday))
       const nowTime = Date.now()
       this.lifeIndex =  parseInt((nowTime - birthTime)/(1000*60*60*24))
     },
     // 把星期转换成中文形式（Vue 3居然删了过滤器）
-    getWeekday (value) {
+    getWeekday (value){
       const CN = "一二三四五六日"
       return CN[value-1]
     },
@@ -143,7 +180,7 @@ export default {
         }
       });
     },
-    getVirtualData(year) {
+    getVirtualData(year){
       year = year || '2017';
       var date = +this.$echarts.number.parseDate(year + '-01-01');
       var end = +this.$echarts.number.parseDate(year + '-12-31');

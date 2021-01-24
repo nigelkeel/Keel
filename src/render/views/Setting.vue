@@ -27,6 +27,10 @@
               <el-form-item label="城市">
                 <el-input class="input-text" v-model="user.city"></el-input>
               </el-form-item>
+              <!-- 签名设置 -->
+              <el-form-item label="签名">
+                <el-input class="input-text" v-model="user.theSignature"></el-input>
+              </el-form-item>
             </el-form> 
           </el-card>
         </el-col>
@@ -66,6 +70,7 @@ export default {
         name: "", // 昵称
         birthday: "", // 生日
         city: "", // 城市
+        theSignature: "这个人很懒，什么都没写。", // 个性签名
       },
       system: {
         securityMode: false, // 安全模式
@@ -117,6 +122,9 @@ export default {
     .input-text {
       display: inline-block;
       width: 220px;
+    }
+    .el-card {
+      height: 800px;
     }
   }
 </style>
