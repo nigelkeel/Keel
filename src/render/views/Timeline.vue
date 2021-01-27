@@ -25,15 +25,12 @@ export default {
   data (){
     return {
       activities: [{
-          content: '活动按期开始',
-          timestamp: '2018-04-15'
+          content: '起床',
+          timestamp: '07:30'
         }, {
-          content: '通过审核',
-          timestamp: '2018-04-13'
-        }, {
-          content: '创建成功',
-          timestamp: '2018-04-11'
-      }]
+          content: '打卡',
+          timestamp: '09:30'
+        }]
     }
   },
 }

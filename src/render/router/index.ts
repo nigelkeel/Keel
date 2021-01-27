@@ -13,6 +13,7 @@ const routes:any =  [
   { path: '/money', component: import('/views/Money.vue') },
   { path: '/tools', component: import('/views/Tools.vue') },
   { path: '/timeline', component: import('/views/Timeline.vue') },
+  { path: '/maps', component: import('/views/Maps.vue') },
   // 工具箱
   
 ]

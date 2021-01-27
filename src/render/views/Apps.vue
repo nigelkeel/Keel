@@ -89,7 +89,7 @@ export default {
           { title: "电子游戏", link: "/", icon: ""},
           { title: "幻想辞典", link: "/", icon: ""},
           { title: "", link: "/", icon: ""},
-          { title: "地图", link: "/", icon: ""},
+          { title: "地图", link: "/Maps", icon: ""},
         ],
         [
           { title: "数据中心", link: "/", icon: ""},
