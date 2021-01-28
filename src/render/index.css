@@ -14,3 +14,7 @@
   overflow: hidden;
 }
 
+/* 去掉高德地图的logo */
+.amap-logo, .amap-copyright {
+  display: none !important;
+}
